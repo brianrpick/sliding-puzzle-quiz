@@ -8,21 +8,19 @@ ul {
     max-height: 230px;
 }
 .sliding-puzzle{
+    position: relative;
     height: 250px;
     width: 250px;
     padding: 10px;
  }
 .tile {
+    position: absolute;
     background: white;
     text-align: center;
     height: 50px;
     padding-top: 10px;
     font-size: 30px;
-    float: left;
     border: 5px solid;
     border-color: #d6d6d6 #5d6066 #5d6066 #d6d6d6;
     width: 60px;
-}
-#down {
-    margin-top: -15px;
 }
