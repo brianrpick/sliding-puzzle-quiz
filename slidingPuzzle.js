@@ -9,7 +9,6 @@
 // function initialize() {
     var targetTile = [];
     var emptyAdjacent = true;
-    var startingPlaces = [
 
     // Adding event listener for clicked tiles
     function tileListener() {
@@ -17,12 +16,11 @@
         tiles.forEach(tile => tile.addEventListener('click', clickedTile));
         //grabbing clicked tile
         function clickedTile(e) {
-            var targetTile = e.srcElement
-                if (emptyAdjacent = true)
-                    //adding id to make invisible
-                    targetTile.setAttribute("id", "invis");
-                end
-
+            var targetTile = e.srcElement;
+            if (emptyAdjacent = true){
+                //adding id to make invisible
+                targetTile.setAttribute("id", "down")
+            };
         };
     };
 

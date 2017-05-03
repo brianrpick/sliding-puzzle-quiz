@@ -23,6 +23,6 @@ ul {
     border-color: #d6d6d6 #5d6066 #5d6066 #d6d6d6;
     width: 60px;
 }
-#invis {
-    visibility: hidden;
+#down {
+    margin-top: -15px;
 }
