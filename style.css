@@ -2,16 +2,16 @@ ul {
     list-style-type: none;
 }
 .sliding-puzzle-figure {
-    background: black;
-    border-radius: 5px;
     max-width: 230px;
     max-height: 230px;
 }
 .sliding-puzzle{
+    border-radius: 5px;
+    background: black;
     position: relative;
-    height: 250px;
-    width: 250px;
-    padding: 10px;
+    height: 230px;
+    width: 230px;
+    padding: 1px;
  }
 .tile {
     position: absolute;
@@ -23,4 +23,6 @@ ul {
     border: 5px solid;
     border-color: #d6d6d6 #5d6066 #5d6066 #d6d6d6;
     width: 60px;
+    top: 0px;
+    bottom: 0px;
 }

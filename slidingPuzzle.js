@@ -9,62 +9,70 @@ document.addEventListener("DOMContentLoaded", initialize);
 function initialize() {
     var targetTile = [];
     var emptyAdjacent = true;
-    var startingSpot = [
-        tile1 = {
+    //built coordinates for starting grid
+    var startingSpots = {
+        1: {
             position: 1,
-            top: '0',
-            left: '0'
+            top: '10',
+            left: '10'
         },
-        tile2 = {
+        2: {
+            position: 2,
+            top: '10',
+            left: '80'
+        },
+        3: {
+            position: 3,
+            top: '10',
+            left: '150'
+        },
+        4: {
+            position: 4,
+            top: '80',
+            left: '10'
+        },
+        5: {
+            position: 5,
+            top: '80',
+            left: '80'
+        },
+        6: {
+            position: 6,
+            top: '80',
+            left: '150'
+        },
+        7: {
+            position: 8,
+            top: '150',
+            left: '10'
+        },
+        8: {
+            position: 7,
+            top: '150',
+            left: '80'
+        },
+        //holding empty coordinate
+        empty: {
             position: 1,
-            top: '0',
-            left: '230'
+            top: '150',
+            left: '150'
         },
-        tile3 = {
-            position: 1,
-            top: '0',
-            left: '460'
-        },
-        tile4 = {
-            position: 1,
-            top: '230',
-            left: '0'
-        },
-        tile5 = {
-            position: 1,
-            top: '230',
-            left: '230'
-        },
-        tile6 = {
-            position: 1,
-            top: '230',
-            left: '460'
-        },
-        tile7 = {
-            position: 1,
-            top: '460',
-            left: '0'
-        },
-        tile8 = {
-            position: 1,
-            top: '460',
-            left: '230'
-        },
-        empty = {
-            position: 1,
-            top: '460',
-            left: '460'
-        },
-    ];
-    tileListener();
-    // Adding event listener for clicked tiles
-    function tileListener() {
+    };
+    tileSetup();
+    // Adding event listener for clicked tiles and gird location
+    function tileSetup() {
         var tiles = Array.from(document.querySelectorAll('.tile'));
-        tiles.forEach(tile => tile.addEventListener('click', clickedTile));
+        tiles.forEach(function(tile, i) {
+            console.log(i)
+            tile.addEventListener('click', clickedTile);
+            tile.style.top = startingSpots[i + 1].top + "px";
+            tile.style.left = startingSpots[i + 1].left + "px";
+        });
+    };
         //grabbing clicked tile
-        function clickedTile(e) {
-            var targetTile = e.srcElement;
-        };
+    function clickedTile(e) {
+        var targetTile = e.srcElement;
+        console.log(e.srcElement)
     };
 }
 
