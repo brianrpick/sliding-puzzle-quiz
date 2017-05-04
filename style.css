@@ -23,7 +23,11 @@ ul {
     width: 60px;
     top: 0px;
     bottom: 0px;
+    transition-property: all;
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(10, 1, 0.8, 1);
 }
+
 figcaption {
     font-size: 20px;
     position: relative;

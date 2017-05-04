@@ -116,8 +116,6 @@ function initialize() {
                 location["empty"]["position"] = hold["position"]
                 location["empty"]["top"] = hold["top"];
                 location["empty"]["left"] = hold["left"];
-                console.log(location["empty"]["position"])
-                console.log(location[targetTile.innerHTML]["position"])
             } else {
                 alert("Can't move that tile");
             };
