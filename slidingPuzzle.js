@@ -2,20 +2,13 @@
 //need to know where empty space is
 //need to know which tile is clicked -- done
 //  check if tile is next to opening
-//    if open is next to it, move tile
-    //making sure clicked target is the right one
+//    if open is next to it
+//      move tile-- done
 document.addEventListener("DOMContentLoaded", initialize);
 
 function initialize() {
     var tiles = Array.from(document.querySelectorAll('.tile'));
-    console.log(tiles)
-    // building hash of 'virtual' board
-    var rows = {
-        one: [1, 2, 3],
-        two: [4, 5, 6],
-        three: [7, 8 , 0]
-    };
-    //built coordinates for starting grid
+    //coordinates for starting grid
     var location = {
         1: {
             position: 1,
@@ -72,31 +65,40 @@ function initialize() {
     setUp();
     // Adding event listener for clicked tiles and grid location
     function setUp() {
-        // var tiles = Array.from(document.querySelectorAll('.tile'));
         tiles.forEach(function(tile, i) {
-            tile.addEventListener('click', clickedTile);
+            tile.addEventListener('click', clickEvent);
             tile.style.top = location[i + 1].top + "px";
             tile.style.left = location[i + 1].left + "px";
-            // location[i + 1]["total"] = (Number(location[i + 1]["top"]) + Number(location[i + 1]["left"]))
         });
     };
     //grabbing clicked tile
-    function clickedTile(e) {
+    function clickEvent(e) {
         var targetTile = e.srcElement;
         moveTile();
-        // var targetTotal = (Number(location[targetTile]["top"]) + Number(location[targetTile]["left"]));
-        // var emptyTotal = location["empty"]["top"] = location["empty"]["left"];
         function checkAdjacent() {
-            //check if opening is touching
-            return true
-        };
+            var edges = false
+            //compare clcked tile with placement of empty tile plus
+            if (location[targetTile.innerHTML]["position"] == 6 || location[targetTile.innerHTML]["position"] == 3 || location[targetTile.innerHTML]["position"] == 7 || location[targetTile.innerHTML]["position"] == 4) {
+                var edges = true
+            };
+            if (location[targetTile.innerHTML]["position"] == Number(location["empty"]["position"]) + 1
+                || location[targetTile.innerHTML]["position"] == Number(location["empty"]["position"]) + 3
+                || location[targetTile.innerHTML]["position"] == Number(location["empty"]["position"]) - 1
+                || location[targetTile.innerHTML]["position"] == Number(location["empty"]["position"]) - 3 && !edges) {
+                return true;
+            } if else (edges) {
+
+            }
+        }
         function moveTile() {
             if (checkAdjacent()) {
+                //holder to adjust location hash
                 var hold = {
                     position: location[targetTile.innerHTML]["position"],
                     top: location[targetTile.innerHTML]["top"],
                     left: location[targetTile.innerHTML]["left"]
                 };
+                //swapping placement of clicked tile(holder) and empty position
                 targetTile.style.top = location["empty"]["top"] + "px";
                 targetTile.style.left = location["empty"]["left"] + "px";
                 location[targetTile.innerHTML]["position"] = location["empty"]["position"];
@@ -105,14 +107,13 @@ function initialize() {
                 location["empty"]["position"] = hold["position"]
                 location["empty"]["top"] = hold["top"];
                 location["empty"]["left"] = hold["left"];
+                console.log(location["empty"]["position"])
+                console.log(location[targetTile.innerHTML]["position"])
             } else {
-                console.log("Can't move that tile");
-                return;
-
+                alert("Can't move that tile");
             };
         };
     };
-
 };
 
 
