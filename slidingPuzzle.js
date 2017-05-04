@@ -77,7 +77,7 @@ function initialize() {
             tile.addEventListener('click', clickedTile);
             tile.style.top = location[i + 1].top + "px";
             tile.style.left = location[i + 1].left + "px";
-            location[i + 1]["total"] = (Number(location[i + 1]["top"]) + Number(location[i + 1]["left"]))
+            // location[i + 1]["total"] = (Number(location[i + 1]["top"]) + Number(location[i + 1]["left"]))
         });
     };
     //grabbing clicked tile
@@ -92,14 +92,23 @@ function initialize() {
         };
         function moveTile() {
             if (checkAdjacent()) {
+                var hold = {
+                    position: location[targetTile.innerHTML]["position"],
+                    top: location[targetTile.innerHTML]["top"],
+                    left: location[targetTile.innerHTML]["left"]
+                };
                 targetTile.style.top = location["empty"]["top"] + "px";
                 targetTile.style.left = location["empty"]["left"] + "px";
-                location["empty"]["top"] = location[targetTile.innerHTML]["top"];
-                location["empty"]["left"] = location[targetTile.innerHTML]["left"];
-                location[targetTile.innerHTML]["top"] = location["empty"]["top"]
-                location[targetTile.innerHTML]["left"] = location["empty"]["left"]
+                location[targetTile.innerHTML]["position"] = location["empty"]["position"];
+                location[targetTile.innerHTML]["top"] = location["empty"]["top"];
+                location[targetTile.innerHTML]["left"] = location["empty"]["left"];
+                location["empty"]["position"] = hold["position"]
+                location["empty"]["top"] = hold["top"];
+                location["empty"]["left"] = hold["left"];
             } else {
+                console.log("Can't move that tile");
                 return;
+
             };
         };
     };
