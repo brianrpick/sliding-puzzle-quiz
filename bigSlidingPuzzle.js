@@ -1,12 +1,4 @@
-//some type of object(hash?) holding values of tiles --done
-//need to know where empty space is
-//need to know which tile is clicked -- done
-//  check if tile is next to opening
-//    if open is next to it
-//      move tile-- done
-document.addEventListener("DOMContentLoaded", initialize);
-
-function initialize() {
+bigSlidingPuzzle.jsfunction initialize() {
     var tiles = Array.from(document.querySelectorAll('.tile'));
     //coordinates for starting grid
     var location = {
@@ -124,20 +116,3 @@ function initialize() {
         };
     };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
